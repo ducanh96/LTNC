@@ -1,0 +1,351 @@
+<!--A Design by W3layouts 
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<title>HAL's FOOD</title>
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="js/jquery.min.js"></script>
+<!-- Custom Theme files -->
+<!--theme-style-->
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />	
+<!--//theme-style-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Cookery Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!---->
+<link href='//fonts.googleapis.com/css?family=Raleway:400,200,100,300,500,600,700,800,900' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700' rel='stylesheet' type='text/css'>
+<link href="css/styles.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/component.css" />
+	<!-- animation-effect -->
+<link href="css/animate.min.css" rel="stylesheet"> 
+<script src="js/wow.min.js"></script>
+<script>
+ new WOW().init();
+</script>
+<!-- //animation-effect -->
+
+</head>
+<body>
+<div class="header head">
+	<div class="container">
+		<div class="logo">
+			<h1><a href="index.html"><span>C</span><img src="images/oo.png" alt=""><img src="images/oo.png" alt="">kery</a></h1>
+		</div>
+		<div class="nav-icon">		
+			<a href="#" class="navicon"></a>
+				<div class="toggle">
+					<ul class="toggle-menu">
+						<li><a  href="index.html">Home</a></li>
+						<li><a  href="menu.html">Menu</a></li>
+						<li><a   href="blog.html">Blog</a></li>
+						<li><a href="mycart.html">Cart</a></li>
+						<li><a class="active" href="contact.html">Contact</a></li>
+					</ul>
+				</div>
+			<script>
+			$('.navicon').on('click', function (e) {
+			  e.preventDefault();
+			  $(this).toggleClass('navicon--active');
+			  $('.toggle').toggleClass('toggle--active');
+			});
+			</script>
+		</div>
+	<div class="clearfix"></div>
+	</div>
+	<!-- start search-->	
+		
+</div>
+<!--content-->
+	<div class="mycart">
+		<div class="container">
+		 <div class="row">
+        <div class="col-sm-12 col-md-10 col-md-offset-1">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Sản phẩm</th>
+                        <th class="text-center">Số lượng</th>
+                        <th class="text-center">Giá</th>
+                        <th class="text-center">Khuyến mãi</th>
+                        <th class="text-center">Tổng</th>
+                        <th> </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!--@foreach (Cart cart in lstC)
+                    {-->
+                        <tr>
+                            <td class="col-sm-8 col-md-6">
+                                <div class="media">
+                                    <a class="thumbnail pull-left" href="#"> <img class="media-object" src="@cart.Image" style="width: 72px; height: 72px;"> </a>
+                                    <div class="media-body">
+                                        <h4 class="media-heading"><a href="#">@cart.Name</a></h4>
+                                        <h5 class="media-heading"> by <a href="#">@cart.CatName</a></h5>
+                                        <span>Status: </span><span class="text-success"><strong>Còn hàng</strong></span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="col-sm-1 col-md-1" style="text-align: center">
+                                <div class="input-group spinner">
+                                    <input type="text" id="@cart.ProductID" class="form-control @cart.ProductID" value="@cart.Quantity">
+                                    <div class="input-group-btn-vertical">
+                                        <button class="btn btn-default @cart.ProductID" type="button" value="+"><i class="fa fa-caret-up"></i></button>
+                                        <button class="btn btn-default @cart.ProductID" type="button" value="-"><i class="fa fa-caret-down"></i></button>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="col-sm-1 col-md-1 text-center"><strong>@cart.Price VNĐ</strong></td>
+                            <td class="col-sm-1 col-md-1 text-center"><strong>@cart.Sale %</strong></td>
+                            <td class="col-sm-1 col-md-1 text-center"><strong class="Total_@cart.ProductID">@cart.Total() VNĐ</strong></td>
+                            <td class="col-sm-1 col-md-1">
+                                <a id="remove" class="btn btn-danger" href="/ShoppingCart/Delete/@cart.ProductID">
+                                    <span class="glyphicon glyphicon-remove"></span> Remove
+                                </a>
+                            </td>
+                        </tr>
+                    <!--}-->
+                    <tr>
+					<td></td>
+					<td></td>
+                        <td>
+                            <a class="btn btn-default" href="menu.html">
+                                <span class="glyphicon glyphicon-shopping-cart"></span> Tiếp tục mua hàng
+                            </a>
+                        </td>
+                        <td>
+                            <button data-toggle="modal" id="btnThanhtoan" data-target="#myModalHorizontal" class="btn btn-info">
+                                Thanh toán <span class="glyphicon glyphicon-play"></span>
+                            </button>
+                            <!-- Modal Thanh toán-->
+                            <div class="modal fade" id="myModalHorizontal" tabindex="-1" role="dialog"
+                                 aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <!-- Modal Header -->
+                                        <div class="modal-header">
+                                            <button type="button" class="close"
+                                                    data-dismiss="modal">
+                                                <span aria-hidden="true">&times;</span>
+                                                <span class="sr-only">Close</span>
+                                            </button>
+                                            <h4 class="modal-title" id="myModalLabel">
+                                                Thông tin mua hàng
+                                            </h4>
+                                        </div>
+
+                                        <!-- Modal Body -->
+                                        <div class="modal-body">
+
+                                            <form class="form-horizontal" role="form">
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label"
+                                                           for="inputEmail3">Tên:<span style="color:red">(*)</span></label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" id="hovaten" class="form-control"
+                                                               placeholder="Họ và tên" />
+                                                        <div id="errhovaten" style="color:red;font-size:small;"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label"
+                                                           for="inputPassword3">SĐT:<span style="color:red">(*)</span></label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" id="sodienthoai" class="form-control"
+                                                               placeholder="Số điện thoại" />
+                                                        <div id="errsodienthoai" style="color:red;font-size:small;"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label"
+                                                           for="inputPassword3">Email:<span style="color:red">(*)</span></label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" id="email" class="form-control"
+                                                               placeholder="Email" />
+                                                        <div id="erremail" style="color:red;font-size:small;"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label"
+                                                           for="inputPassword3">Địa chỉ:<span style="color:red">(*)</span></label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" id="diachi" class="form-control"
+                                                               placeholder="Địa chỉ" />
+                                                        <div id="errdiachi" style="color:red;font-size:small;"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label"
+                                                           for="inputPassword3">Thanh toán:<span style="color:red">(*)</span></label>
+                                                    <div class="col-sm-10">
+                                                        <div class="radio">
+                                                            <label><input type="radio" name="optradio" class="cachthucthanhtoan 1">Trực tiếp</label>
+                                                        </div>
+                                                        <div class="radio">
+                                                            <label><input type="radio" name="optradio" class="cachthucthanhtoan 2">Ship Cod</label>
+                                                        </div>
+                                                        <div class="radio">
+                                                            <label><input type="radio" name="optradio" class="cachthucthanhtoan 3">Chuyển khoản</label>
+                                                        </div>
+                                                        <div id="errthanhtoan" style="color:red;font-size:small;"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label"
+                                                           for="inputPassword3">Tổng tiền:</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" name="tongtien" class="form-control disabled"
+                                                               id="inputEmail3" value="@Session["alltotal"] VNĐ" />
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <p>Cám ơn quý khách đã tin dùng sản phẩm tại HAL's FOOD. Hãy cùng đồng hành cùng HAL's FOOD để thưởng thức những món ngon mỗi ngày.</p>
+                                            <button type="button" class="btn btn-default"
+                                                    data-dismiss="modal">
+                                                Quay lại
+                                            </button>
+                                            <button type="button" class="btn btn-primary" id="btnXacnhan">
+                                                Xác nhận!
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Modal Hóa đơn-->
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+		</div>
+	</div>
+	</div>
+<!--footer-->
+	<div class="footer">
+		<div class="container">
+			<div class="footer-head">
+				<div class="col-md-8 footer-top animated wow fadeInRight" data-wow-duration="1000ms" data-wow-delay="500ms">
+					<ul class=" in">
+						<li><a href="index.html">Home</a></li>
+						<li><a  href="menu.html">Menu</a></li>
+						<li><a  href="blog.html">Blog</a></li>
+						<li><a  href="mycart.html">Cart</a></li>
+						<li><a  href="contact.html">Contact</a></li>
+					</ul>					
+						<span></span>
+				</div>
+				<div class="col-md-4 footer-bottom  animated wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="500ms">
+					<h2>Follow Us</h2>
+					<label><i class="glyphicon glyphicon-menu-up"></i></label>
+					<p>Đừng bỏ lỡ bất cứ thứ gì từ cửa hàng chúng tôi bằng cách follow 
+   và share cho mọi người cùng biết nhé ^^.</p>
+					<ul class="social-ic">
+						<li><a href="#"><i></i></a></li>
+						<li><a href="#"><i class="ic"></i></a></li>
+						<li><a href="#"><i class="ic1"></i></a></li>
+						<li><a href="#"><i class="ic2"></i></a></li>
+						<li><a href="#"><i class="ic3"></i></a></li>
+					</ul>
+
+				</div>
+			<div class="clearfix"> </div>
+					
+			</div>
+			<p class="footer-class animated wow bounce" data-wow-duration="1000ms" data-wow-delay="500ms">&copy; 2016 Cookery . All Rights Reserved</p>
+		</div>
+	</div>		
+	<!--//footer-->
+	<input type="hidden" name="name" value="1" id="tt" />
+<script type="text/javascript">
+    $('.spinner .btn:first-of-type').click(function () {
+        var proID = this.className.split(' ')[2];
+        $('#' + proID).val(parseInt($('#' + proID).val(), 10) + 1);
+        var num = $('#' + proID).val();
+        $.ajax({
+            type: "POST",
+            url: "/ShoppingCart/EditNumber",
+            data: JSON.stringify({ ID: proID, Num: num }),
+            contentType: "application/json;charset-utf-8",
+            dataType: "json",
+            success: function (obj) {
+                var price = obj.Price;
+                var sale = obj.Sale;
+                var quan = obj.Quantity;
+                var total = price * quan * (1 - sale / 100);
+                $('.Total_' + proID).text((total + ' VNĐ').toString());
+                location.reload();
+            },
+            error: function (obj) {
+
+            }
+        });
+    });
+    $('.spinner .btn:last-of-type').click(function () {
+        var proID = this.className.split(' ')[2];
+        $('#' + proID).val(parseInt($('#' + proID).val(), 10) - 1);
+        var num = $('#' + proID).val();
+        $.ajax({
+            type: "POST",
+            url: "/ShoppingCart/EditNumber",
+            data: JSON.stringify({ ID: proID, Num: num }),
+            contentType: "application/json;charset-utf-8",
+            dataType: "json",
+            success: function (obj) {
+                var price = obj.Price;
+                var sale = obj.Sale;
+                var quan = obj.Quantity;
+                var total = price * quan * (1 - sale / 100);
+                $('.Total_' + proID).text((total + ' VNĐ').toString());
+                location.reload();
+            },
+            error: function (obj) {
+
+            }
+        });
+    });
+    $("#myBtn").click(function () {
+        $("#myModalHorizontal").modal("show");
+    });
+    $("#myModalHorizontal").on('show.bs.modal', function () {
+
+    });
+    var cachthuc = $(".cachthucthanhtoan").change(function () {
+        var cachthucval = this.className.split(' ')[1];
+        $("#tt").val(cachthucval);
+    });
+    var validate = new ValidateController();
+    validate.Register(new ValidateObject("hovaten", [new ValidateType(IsRequired, [], "Không được để trống phần tên.")]));
+    validate.Register(new ValidateObject("sodienthoai", [new ValidateType(IsLength, [10, 11], "SĐT phải từ 10->11 số")]));
+    validate.Register(new ValidateObject("email", [new ValidateType(IsRequired, [], "Không được để trống phần email.")]));
+    validate.Register(new ValidateObject("diachi", [new ValidateType(IsRequired, [], "Không được để trống phần địa chỉ.")]));
+    $("#btnXacnhan").click(function () {
+        var hovaten = $("#hovaten").val();
+        var sodienthoai = $("#sodienthoai").val();
+        var email = $("#email").val();
+        var diachi = $("#diachi").val();
+        var thanhtoan = $("#tt").val();
+        var x = validate.ValidateAll();
+        if (x == true) {
+
+            $("#myModalHorizontal").modal("hide");
+            window.location = "/ShoppingCart/Thongbao";
+        }
+
+
+    });
+</script>
+
+</body>
+</html>
+
