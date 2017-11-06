@@ -9,9 +9,8 @@
     </head>
 
     <body>
-        <p>Hello! </p>
-        <p>
-            ${aa}
-        </p>
+        <jsp:include page="header.jsp"></jsp:include>
+        <h1>Xin chao cac ban</h1>
+        <jsp:include page="footer.jsp"></jsp:include>
     </body>
 </html>
