@@ -17,8 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping(value = "/home")
 public class HomeController {
     @RequestMapping(value = "/index")
-    public String Index(ModelMap mm){
-        mm.put("aa", "xin chao cac ban");
-        return "pages/index";
+    public String Index(){
+        return "pages/comment";
     }
+    
+    
 }

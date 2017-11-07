@@ -9,9 +9,8 @@
     </head>
 
     <body>
-        <p>Hello! </p>
-        <p>
-            ${aa}
-        </p>
+       
+        <jsp:include page="content-home.jsp"></jsp:include>
+        <jsp:include page="footer.jsp"></jsp:include>
     </body>
 </html>
