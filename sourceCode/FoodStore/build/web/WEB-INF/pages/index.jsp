@@ -9,8 +9,8 @@
     </head>
 
     <body>
-        <jsp:include page="header.jsp"></jsp:include>
-        <h1>Xin chao cac ban</h1>
+       
+        <jsp:include page="content-home.jsp"></jsp:include>
         <jsp:include page="footer.jsp"></jsp:include>
     </body>
 </html>

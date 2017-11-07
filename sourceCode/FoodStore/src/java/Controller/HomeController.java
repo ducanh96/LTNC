@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class HomeController {
     @RequestMapping(value = "/index")
     public String Index(){
-        return "pages/menu";
+        return "pages/comment";
     }
+    
+    
 }
