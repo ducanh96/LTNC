@@ -7,11 +7,11 @@
             <file>file:/E:/Java%20Web%201/LTNC/sourceCode/FoodStore/web/WEB-INF/pages/content-contact.jsp</file>
             <file>file:/E:/Java%20Web%201/LTNC/sourceCode/FoodStore/web/WEB-INF/pages/comment.jsp</file>
             <file>file:/E:/Java%20Web%201/LTNC/sourceCode/FoodStore/web/redirect.jsp</file>
-            <file>file:/E:/Java%20Web%201/LTNC/sourceCode/FoodStore/src/java/Domain/Donhang.java</file>
             <file>file:/E:/Java%20Web%201/LTNC/sourceCode/FoodStore/web/WEB-INF/pages/blog.jsp</file>
             <file>file:/E:/Java%20Web%201/LTNC/sourceCode/FoodStore/web/WEB-INF/pages/header.jsp</file>
             <file>file:/E:/Java%20Web%201/LTNC/sourceCode/FoodStore/web/WEB-INF/pages/footer.jsp</file>
-            <file>file:/E:/Java%20Web%201/LTNC/sourceCode/FoodStore/src/java/Domain/Chitietdonhang.java</file>
+            <file>file:/E:/Java%20Web%201/LTNC/sourceCode/FoodStore/web/WEB-INF/applicationContext.xml</file>
+            <file>file:/E:/Java%20Web%201/LTNC/sourceCode/FoodStore/src/java/hibernate.reveng.xml</file>
             <file>file:/E:/Java%20Web%201/LTNC/sourceCode/FoodStore/src/java/Controller/HomeController.java</file>
             <file>file:/E:/Java%20Web%201/LTNC/sourceCode/FoodStore/web/WEB-INF/pages/content-blog.jsp</file>
             <file>file:/E:/Java%20Web%201/LTNC/sourceCode/FoodStore/web/WEB-INF/pages/contact.jsp</file>
@@ -20,6 +20,8 @@
             <file>file:/E:/Java%20Web%201/LTNC/sourceCode/FoodStore/web/WEB-INF/web.xml</file>
             <file>file:/E:/Java%20Web%201/LTNC/sourceCode/FoodStore/web/WEB-INF/pages/content-comment.jsp</file>
             <file>file:/E:/Java%20Web%201/LTNC/sourceCode/FoodStore/web/WEB-INF/pages/content-menu.jsp</file>
+            <file>file:/E:/Java%20Web%201/LTNC/sourceCode/FoodStore/src/java/hibernate.cfg.xml</file>
+            <file>file:/E:/Java%20Web%201/LTNC/sourceCode/FoodStore/src/java/util/HibernateUtil.java</file>
             <file>file:/E:/Java%20Web%201/LTNC/sourceCode/FoodStore/web/WEB-INF/pages/index.jsp</file>
         </group>
     </open-files>
