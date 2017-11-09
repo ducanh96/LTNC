@@ -20,7 +20,11 @@
             <file>file:/E:/Java%20Web%201/LTNC/sourceCode/FoodStore/web/WEB-INF/web.xml</file>
             <file>file:/E:/Java%20Web%201/LTNC/sourceCode/FoodStore/web/WEB-INF/pages/content-comment.jsp</file>
             <file>file:/E:/Java%20Web%201/LTNC/sourceCode/FoodStore/web/WEB-INF/pages/content-menu.jsp</file>
+<<<<<<< HEAD
             <file>file:/E:/Java%20Web%201/LTNC/sourceCode/FoodStore/src/java/Dao/CategoryDao.java</file>
+=======
+            <file>file:/E:/Java%20Web%201/LTNC/sourceCode/FoodStore/src/java/hibernate.cfg.xml</file>
+>>>>>>> #001
             <file>file:/E:/Java%20Web%201/LTNC/sourceCode/FoodStore/src/java/util/HibernateUtil.java</file>
             <file>file:/E:/Java%20Web%201/LTNC/sourceCode/FoodStore/web/WEB-INF/pages/index.jsp</file>
         </group>

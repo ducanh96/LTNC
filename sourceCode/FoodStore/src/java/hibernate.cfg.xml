@@ -48,7 +48,10 @@ Contributor(s):
     <property name="hibernate.show_sql">true</property>
     <property name="hibernate.current_session_context_class">thread</property>
     <property name="hibernate.query.factory_class">org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory</property>
+<<<<<<< HEAD
     <property name="hibernate.connection.password">123duc@nh</property>
+=======
+>>>>>>> #001
     <mapping resource="Domain/Chitietdonhang.hbm.xml"/>
     <mapping resource="Domain/Sanpham.hbm.xml"/>
     <mapping resource="Domain/Taikhoan.hbm.xml"/>

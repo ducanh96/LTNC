@@ -41,6 +41,7 @@ Contributor(s):
 -->
 <hibernate-reverse-engineering>
   <schema-selection match-catalog="foodstore"/>
+<<<<<<< HEAD
   <table-filter match-name="chitietdonhang"/>
   <table-filter match-name="taikhoan"/>
   <table-filter match-name="donhang"/>
@@ -49,4 +50,14 @@ Contributor(s):
   <table-filter match-name="hoadon"/>
   <table-filter match-name="loaisp"/>
   <table-filter match-name="comment"/>
+=======
+  <table-filter match-name="nhanvien"/>
+  <table-filter match-name="donhang"/>
+  <table-filter match-name="hoadon"/>
+  <table-filter match-name="comment"/>
+  <table-filter match-name="sanpham"/>
+  <table-filter match-name="taikhoan"/>
+  <table-filter match-name="chitietdonhang"/>
+  <table-filter match-name="loaisp"/>
+>>>>>>> #001
 </hibernate-reverse-engineering>
