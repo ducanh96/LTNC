@@ -314,11 +314,10 @@
                     <div class="grid-categories animated wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="500ms">
                         <h4>Categories</h4>
                         <ul class="popular">
-                            <li><a href="#"><i class="glyphicon glyphicon-menu-right"> </i>Breakfast</a></li>
-                            <li><a href="#"><i class="glyphicon glyphicon-menu-right"> </i>Lunch</a></li>
-                            <li><a href="#"><i class="glyphicon glyphicon-menu-right"> </i>Dinner</a></li>
-                            <li><a href="#"><i class="glyphicon glyphicon-menu-right"> </i>Dessert</a></li>
-
+                            <c:forEach var="item" items="${loaisp}">
+                                 <li><a href="#"><i class="glyphicon glyphicon-menu-right"> </i>${item.tenLoaiSp}</a></li>
+                            </c:forEach>
+                      
                         </ul>
                     </div>
                     <div class="blog-bottom animated wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="500ms">

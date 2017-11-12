@@ -21,6 +21,9 @@
         <property name="prefix" value="/WEB-INF/" />
         <property name="suffix" value=".jsp" />
     </bean>
+    
+    <bean id="cDAO" class="Dao.LoaispDaoImp" />
+    <bean id="cService" class="Service.LoaispServiceImp" />
 
     <mvc:resources mapping="/resources/**" location="/resources/" cache-period="31556926"/>
     <mvc:annotation-driven />
