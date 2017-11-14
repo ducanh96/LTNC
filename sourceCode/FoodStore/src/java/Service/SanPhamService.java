@@ -15,4 +15,5 @@ import java.util.ArrayList;
 public interface SanPhamService {
     ArrayList<Sanpham> getAllProductByMaSP(int MaLoapSP);
     ArrayList<Sanpham> getAllProduct();
+    ArrayList<Sanpham> SearchAllProductByName(String name);
 }

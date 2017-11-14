@@ -8,6 +8,7 @@ package Dao;
 import Domain.Sanpham;
 import java.util.ArrayList;
 import java.util.List;
+import org.eclipse.jdt.internal.compiler.batch.Main;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -72,6 +73,31 @@ public class SanPhamDaoImp implements SanPhamDao{
       }
         return null;
     }
+
+    @Override
+    public ArrayList<Sanpham> SearchAllProductByName(String name) {
+         try{
+          session.getTransaction().begin();
+          String sql = "from Sanpham where tenSp like ?";
+          Query query = session.createQuery(sql);
+          query.setString(0, "%"+name+"%");
+          List list = query.list();
+          ArrayList<Sanpham> arrayList = new ArrayList<Sanpham>();
+          arrayList = (ArrayList<Sanpham>)list;
+          session.flush();
+          session.getTransaction().commit();
+          return arrayList;
+      }catch(Exception ex)
+      {
+          if(session.getTransaction().isActive())
+          {
+              session.getTransaction().rollback();  
+          }
+          ex.printStackTrace();
+      }
+        return null;
+    }
+    
   
     
 }
