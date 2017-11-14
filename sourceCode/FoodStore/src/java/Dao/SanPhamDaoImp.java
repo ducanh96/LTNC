@@ -24,7 +24,7 @@ public class SanPhamDaoImp implements SanPhamDao{
     
       public SanPhamDaoImp(){
         SessionFactory sessionFactory  = HibernateUtil.getSessionFactory();
-        this.session = sessionFactory.getCurrentSession();
+        this.session = sessionFactory.openSession();
     }
     @Override
     public ArrayList<Sanpham> getAllProductByMaSP(int MaLoaiSP) {

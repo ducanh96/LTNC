@@ -315,7 +315,7 @@
                         <h4>Categories</h4>
                         <ul class="popular">
                             <c:forEach var="item" items="${loaisp}">
-                                 <li><a href="#"><i class="glyphicon glyphicon-menu-right"> </i>${item.tenLoaiSp}</a></li>
+                                 <li><a href="${pageContext.request.contextPath}/product/list?MaLoaiSP=${item.id}"><i class="glyphicon glyphicon-menu-right"> </i>${item.tenLoaiSp}</a></li>
                             </c:forEach>
                       
                         </ul>
