@@ -27,5 +27,10 @@ public class SanPhamServiceImp implements SanPhamService{
     public ArrayList<Sanpham> getAllProduct() {
         return sanPhamDao.getAllProduct();
     }
+
+    @Override
+    public ArrayList<Sanpham> SearchAllProductByName(String name) {
+        return sanPhamDao.SearchAllProductByName(name);
+    }
     
 }

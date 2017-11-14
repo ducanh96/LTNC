@@ -97,8 +97,8 @@
                     <div class="search-in animated wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="500ms">
                         <h4>Search</h4>
                         <div class="search">
-                            <form>
-                                <input type="text" placeholder="Search" required="" >
+                            <form action="${pageContext.request.contextPath}/product/search" method="Get">
+                                <input type="text" placeholder="Search tên món" required="" name="name">
                                 <input type="submit" value="" >
                             </form>
                         </div>
