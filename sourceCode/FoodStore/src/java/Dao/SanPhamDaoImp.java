@@ -5,12 +5,10 @@
  */
 package Dao;
 
-import Domain.Loaisp;
-import Domain.Taikhoan;
+import Domain.Sanpham;
 import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Query;
-import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import util.HibernateUtil;
@@ -19,27 +17,27 @@ import util.HibernateUtil;
  *
  * @author Duc Anh
  */
-public class LoaispDaoImp {
+public class SanPhamDaoImp implements SanPhamDao{
+
     
     private Session session;
     
-    public LoaispDaoImp(){
+      public SanPhamDaoImp(){
         SessionFactory sessionFactory  = HibernateUtil.getSessionFactory();
-        this.session = sessionFactory.openSession();
+        this.session = sessionFactory.getCurrentSession();
     }
-    
-    public ArrayList<Loaisp> getAllcategory() {
-      try{
+    @Override
+    public ArrayList<Sanpham> getAllProductByMaSP(int MaLoaiSP) {
+          try{
           session.getTransaction().begin();
-          String sql = "from Loaisp";
+          String sql = "from Sanpham where MaLoaiSP = ?";
           Query query = session.createQuery(sql);
-          
+          query.setInteger(0, MaLoaiSP);
           List list = query.list();
-          ArrayList<Loaisp> arrayList = new ArrayList<Loaisp>();
-          arrayList = (ArrayList<Loaisp>)list;
+          ArrayList<Sanpham> arrayList = new ArrayList<Sanpham>();
+          arrayList = (ArrayList<Sanpham>)list;
           session.flush();
           session.getTransaction().commit();
-        
           return arrayList;
       }catch(Exception ex)
       {
@@ -51,7 +49,7 @@ public class LoaispDaoImp {
           ex.printStackTrace();
       }
         return null;
-
-   
-}
+    }
+  
+    
 }
