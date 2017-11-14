@@ -97,6 +97,31 @@ public class SanPhamDaoImp implements SanPhamDao{
       }
         return null;
     }
+
+    @Override
+    public ArrayList<Sanpham> SearchAllProductByPrice(Long from, Long to) {
+         try{
+          session.getTransaction().begin();
+          String sql = "from Sanpham where giaSp > ? and giaSp <= ?";
+          Query query = session.createQuery(sql);
+          query.setLong(0, from);
+          query.setLong(1, to);
+          List list = query.list();
+          ArrayList<Sanpham> arrayList = new ArrayList<Sanpham>();
+          arrayList = (ArrayList<Sanpham>)list;
+          session.flush();
+          session.getTransaction().commit();
+          return arrayList;
+      }catch(Exception ex)
+      {
+          if(session.getTransaction().isActive())
+          {
+              session.getTransaction().rollback();  
+          }
+          ex.printStackTrace();
+      }
+        return null;
+    }
     
   
     

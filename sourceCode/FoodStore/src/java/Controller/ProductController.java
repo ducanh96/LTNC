@@ -29,6 +29,7 @@ public class ProductController {
     @Autowired
     private LoaispServiceImp loaispService;
 
+    //xu ly lay san pham theo ma
     @RequestMapping(value = "/list")
     public String getListProductByMaSP(ModelMap mm, @RequestParam int MaLoaiSP) {
 
@@ -49,10 +50,27 @@ public class ProductController {
         return "pages/menu";
     }
 
+    //tim kiem san pham theo ten
     @RequestMapping(value = "/search", method = RequestMethod.GET)
     public String SearchProductByName(ModelMap mm, @RequestParam String name) {
 
         ArrayList<Sanpham> list = sanPhamService.SearchAllProductByName(name);
+        mm.put("listProduct", list);
+        //truyen tat ca cac san pham vao view
+        mm.put("loaisp", loaispService.getAllcategory());
+
+        int count = list.size();
+        if (count % 3 == 0) {
+            mm.put("count", count / 3);
+        } else {
+            mm.put("count", (int) count / 3 + 1);
+        }
+        return "pages/menu";
+    }
+
+    @RequestMapping(value = "/SearchPrize", method = RequestMethod.GET)
+    public String SearchProductByPrize(ModelMap mm, @RequestParam Long from, @RequestParam Long to) {
+        ArrayList<Sanpham> list = sanPhamService.SearchAllProductByPrice(from, to);
         mm.put("listProduct", list);
         //truyen tat ca cac san pham vao view
         mm.put("loaisp", loaispService.getAllcategory());
