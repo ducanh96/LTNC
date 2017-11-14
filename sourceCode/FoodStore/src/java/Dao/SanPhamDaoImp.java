@@ -43,8 +43,30 @@ public class SanPhamDaoImp implements SanPhamDao{
       {
           if(session.getTransaction().isActive())
           {
-              session.getTransaction().rollback();
-              
+              session.getTransaction().rollback();  
+          }
+          ex.printStackTrace();
+      }
+        return null;
+    }
+
+    @Override
+    public ArrayList<Sanpham> getAllProduct() {
+         try{
+          session.getTransaction().begin();
+          String sql = "from Sanpham";
+          Query query = session.createQuery(sql);
+          List list = query.list();
+          ArrayList<Sanpham> arrayList = new ArrayList<Sanpham>();
+          arrayList = (ArrayList<Sanpham>)list;
+          session.flush();
+          session.getTransaction().commit();
+          return arrayList;
+      }catch(Exception ex)
+      {
+          if(session.getTransaction().isActive())
+          {
+              session.getTransaction().rollback();  
           }
           ex.printStackTrace();
       }

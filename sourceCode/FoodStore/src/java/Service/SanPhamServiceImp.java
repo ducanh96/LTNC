@@ -19,8 +19,13 @@ public class SanPhamServiceImp implements SanPhamService{
     @Autowired
     private SanPhamDao sanPhamDao;
     @Override
-    public ArrayList<Sanpham> getAllProduct(int MaLoapSP) {
+    public ArrayList<Sanpham> getAllProductByMaSP(int MaLoapSP) {
         return sanPhamDao.getAllProductByMaSP(MaLoapSP);
+    }
+
+    @Override
+    public ArrayList<Sanpham> getAllProduct() {
+        return sanPhamDao.getAllProduct();
     }
     
 }

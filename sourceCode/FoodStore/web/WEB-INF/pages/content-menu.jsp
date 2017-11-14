@@ -5,6 +5,7 @@
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -28,15 +29,26 @@
                 </div>
 
                 <div class="col-md-9 blog-header">
-                    <div class=" blog-head">
-                        <div class="col-md-4 blog-top">
+                    
+                 
+                    <c:forEach var="i" begin="0" end="${count-1}" step="1" varStatus="loopOut">
+                        <% System.out.println("ket qua:"+pageContext.findAttribute("count")); %>
+                        
+                        <div class="blog-head">
+                            <%! int dem = 0; %>
+                            <c:forEach var="item" end="${loopOut.index*3+2}" begin="${loopOut.index*3}" varStatus="loopInner">
+                            <% dem++; %>
+                             <% System.out.println(dem);               
+                             %>  
+                             <c:if test="${loopInner.current < listProduct.size()}">
+                                  <div class="col-md-4 blog-top">
                             <div class="blog-in">
                                 <a href="single.html"><img class="img-responsive" src="<c:url value="/resources/images/bl.jpg"/>" alt=" "></a>
                                 <div class="blog-grid">
-                                    <h3><a href="single.html">On the other hand</a></h3>
+                                    <h3><a href="single.html">${listProduct[item].tenSp}</a></h3>
                                     <div class="more">						
                                         <a class="link link-yaku">
-                                            <h2><span>12000</span> <span>đồng</span></h2>
+                                            <h2><span>${listProduct[item].giaSp}</span> <span>đồng</span></h2>
                                         </a>
                                     </div>
 
@@ -52,198 +64,34 @@
                                 </div>					
                             </div>
                         </div>
-                        <div class="col-md-4 blog-top">
-                            <div class="blog-in">
-                                <a href="single.html"><img class="img-responsive" src="<c:url value="/resources/images/bl1.jpg"/>" alt=" "></a>
-                                <div class="blog-grid">
-                                    <h3><a href="single.html">On the other hand</a></h3>
-                                    <div class="more">						
-                                        <a class="link link-yaku">
-                                            <h2><span>12000</span> <span>đồng</span></h2>
-                                        </a>
-                                    </div>
-
-
-                                    <button type="button" class="btn btn-1 btn-block btn-success"><i class="glyphicon glyphicon-shopping-cart"></i> Thêm vào giỏ hàng</button>
-                                    <button type="button" class="btn btn-1 btn-block btn-success"><i class="glyphicon glyphicon-usd"></i> Mua luôn</button>
-                                    <div class="more">						
-                                        <a class="link link-yaku" href="single.html">
-                                            <span>R</span><span>e</span><span>a</span><span>d</span> <span>M</span><span>o</span><span>r</span><span>e</span>					
-                                        </a>
-                                    </div>
-                                </div>					
+                             </c:if>
+                            
+                               
+                              <% if(dem %3 ==0)
+                              {
+                                   System.out.println(dem); 
+                              %>
+                                  <div class="clearfix"> </div>
+                                  <%
+                                      };
+                                       %>
+                                      
+                                       
+                        </c:forEach>
+                             
                             </div>
-                        </div>
-                        <div class="col-md-4 blog-top">
-                            <div class="blog-in">
-                                <a href="single.html"><img class="img-responsive" src="<c:url value="/resources/images/bl2.jpg"/>" alt=" "></a>
-                                <div class="blog-grid">
-                                    <h3><a href="single.html">On the other hand</a></h3>
-                                    <div class="more">						
-                                        <a class="link link-yaku">
-                                            <h2><span>12000</span> <span>đồng</span></h2>
-                                        </a>
-                                    </div>
-
-                                    <button type="button" class="btn btn-1 btn-block btn-success"><i class="glyphicon glyphicon-shopping-cart"></i> Thêm vào giỏ hàng</button>
-                                    <button type="button" class="btn btn-1 btn-block btn-success"><i class="glyphicon glyphicon-usd"></i> Mua luôn</button>
-
-
-                                    <div class="more">						
-                                        <a class="link link-yaku" href="single.html">
-                                            <span>R</span><span>e</span><span>a</span><span>d</span> <span>M</span><span>o</span><span>r</span><span>e</span>					
-                                        </a>
-                                    </div>
-                                </div>					
-                            </div>
-                        </div>
-                        <div class="clearfix"> </div>
+                        
+                    </c:forEach>
+                   
+                    
+                         
+                      
+                         
+                          
+                        
                     </div>
-                    <div class=" blog-head">
-                        <div class="col-md-4 blog-top">
-                            <div class="blog-in">
-                                <a href="single.html"><img class="img-responsive" src="<c:url value="/resources/images/bl3.jpg"/>" alt=" "></a>
-                                <div class="blog-grid">
-                                    <h3><a href="single.html">On the other hand</a></h3>
-                                    <div class="more">						
-                                        <a class="link link-yaku">
-                                            <h2><span>12000</span> <span>đồng</span></h2>
-                                        </a>
-                                    </div>
-
-                                    <button type="button" class="btn btn-1 btn-block btn-success"><i class="glyphicon glyphicon-shopping-cart"></i> Thêm vào giỏ hàng</button>
-                                    <button type="button" class="btn btn-1 btn-block btn-success"><i class="glyphicon glyphicon-usd"></i> Mua luôn</button>
-
-
-                                    <div class="more">						
-                                        <a class="link link-yaku" href="single.html">
-                                            <span>R</span><span>e</span><span>a</span><span>d</span> <span>M</span><span>o</span><span>r</span><span>e</span>					
-                                        </a>
-                                    </div>
-                                </div>					
-                            </div>
-                        </div>
-                        <div class="col-md-4 blog-top">
-                            <div class="blog-in">
-                                <a href="single.html"><img class="img-responsive" src="<c:url value="/resources/images/bl4.jpg"/>" alt=" "></a>
-                                <div class="blog-grid">
-                                    <h3><a href="single.html">On the other hand</a></h3>
-                                    <div class="more">						
-                                        <a class="link link-yaku">
-                                            <h2><span>12000</span> <span>đồng</span></h2>
-                                        </a>
-                                    </div>
-
-                                    <button type="button" class="btn btn-1 btn-block btn-success"><i class="glyphicon glyphicon-shopping-cart"></i> Thêm vào giỏ hàng</button>
-                                    <button type="button" class="btn btn-1 btn-block btn-success"><i class="glyphicon glyphicon-usd"></i> Mua luôn</button>
-
-
-                                    <div class="more">						
-                                        <a class="link link-yaku" href="single.html">
-                                            <span>R</span><span>e</span><span>a</span><span>d</span> <span>M</span><span>o</span><span>r</span><span>e</span>					
-                                        </a>
-                                    </div>
-                                </div>					
-                            </div>
-                        </div>
-                        <div class="col-md-4 blog-top">
-                            <div class="blog-in">
-                                <a href="single.html"><img class="img-responsive" src="<c:url value="/resources/images/bl5.jpg"/>" alt=" "></a>
-                                <div class="blog-grid">
-                                    <h3><a href="single.html">On the other hand</a></h3>
-                                    <div class="more">						
-                                        <a class="link link-yaku">
-                                            <h2><span>12000</span> <span>đồng</span></h2>
-                                        </a>
-                                    </div>
-
-                                    <button type="button" class="btn btn-1 btn-block btn-success"><i class="glyphicon glyphicon-shopping-cart"></i> Thêm vào giỏ hàng</button>
-                                    <button type="button" class="btn btn-1 btn-block btn-success"><i class="glyphicon glyphicon-usd"></i> Mua luôn</button>
-
-
-                                    <div class="more">						
-                                        <a class="link link-yaku" href="single.html">
-                                            <span>R</span><span>e</span><span>a</span><span>d</span> <span>M</span><span>o</span><span>r</span><span>e</span>					
-                                        </a>
-                                    </div>
-                                </div>					
-                            </div>
-                        </div>
-                        <div class="clearfix"> </div>
-                    </div>
-                    <div class=" blog-head">
-                        <div class="col-md-4 blog-top">
-                            <div class="blog-in">
-                                <a href="single.html"><img class="img-responsive" src="<c:url value="/resources/images/bl.jpg"/>" alt=" "></a>
-                                <div class="blog-grid">
-                                    <h3><a href="single.html">On the other hand</a></h3>
-                                    <div class="more">						
-                                        <a class="link link-yaku">
-                                            <h2><span>12000</span> <span>đồng</span></h2>
-                                        </a>
-                                    </div>
-
-                                    <button type="button" class="btn btn-1 btn-block btn-success"><i class="glyphicon glyphicon-shopping-cart"></i> Thêm vào giỏ hàng</button>
-                                    <button type="button" class="btn btn-1 btn-block btn-success"><i class="glyphicon glyphicon-usd"></i> Mua luôn</button>
-
-
-                                    <div class="more">						
-                                        <a class="link link-yaku" href="single.html">
-                                            <span>R</span><span>e</span><span>a</span><span>d</span> <span>M</span><span>o</span><span>r</span><span>e</span>					
-                                        </a>
-                                    </div>
-                                </div>					
-                            </div>
-                        </div>
-                        <div class="col-md-4 blog-top">
-                            <div class="blog-in">
-                                <a href="single.html"><img class="img-responsive" src="<c:url value="/resources/images/bl1.jpg"/>" alt=" "></a>
-                                <div class="blog-grid">
-                                    <h3><a href="single.html">On the other hand</a></h3>
-                                    <div class="more">						
-                                        <a class="link link-yaku">
-                                            <h2><span>12000</span> <span>đồng</span></h2>
-                                        </a>
-                                    </div>
-
-                                    <button type="button" class="btn btn-1 btn-block btn-success"><i class="glyphicon glyphicon-shopping-cart"></i> Thêm vào giỏ hàng</button>
-                                    <button type="button" class="btn btn-1 btn-block btn-success"><i class="glyphicon glyphicon-usd"></i> Mua luôn</button>
-
-
-                                    <div class="more">						
-                                        <a class="link link-yaku" href="single.html">
-                                            <span>R</span><span>e</span><span>a</span><span>d</span> <span>M</span><span>o</span><span>r</span><span>e</span>					
-                                        </a>
-                                    </div>
-                                </div>					
-                            </div>
-                        </div>
-                        <div class="col-md-4 blog-top">
-                            <div class="blog-in">
-                                <a href="single.html"><img class="img-responsive" src="<c:url value="/resources/images/bl2.jpg"/>" alt=" "></a>
-                                <div class="blog-grid">
-                                    <h3><a href="single.html">On the other hand</a></h3>
-                                    <div class="more">						
-                                        <a class="link link-yaku">
-                                            <h2><span>12000</span> <span>đồng</span></h2>
-                                        </a>
-                                    </div>
-
-                                    <button type="button" class="btn btn-1 btn-block btn-success"><i class="glyphicon glyphicon-shopping-cart"></i> Thêm vào giỏ hàng</button>
-                                    <button type="button" class="btn btn-1 btn-block btn-success"><i class="glyphicon glyphicon-usd"></i> Mua luôn</button>
-
-
-                                    <div class="more">						
-                                        <a class="link link-yaku" href="single.html">
-                                            <span>R</span><span>e</span><span>a</span><span>d</span> <span>M</span><span>o</span><span>r</span><span>e</span>					
-                                        </a>
-                                    </div>
-                                </div>					
-                            </div>
-                        </div>
-                        <div class="clearfix"> </div>
-                    </div>
-                </div>
+                   
+               
 
                 <div class="col-md-3 categories-grid">
                     <div class="search-in animated wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="500ms">

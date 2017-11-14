@@ -14,4 +14,5 @@ import java.util.ArrayList;
  */
 public interface SanPhamDao {
     ArrayList<Sanpham> getAllProductByMaSP(int MaLoapSP);
+    ArrayList<Sanpham> getAllProduct();
 }

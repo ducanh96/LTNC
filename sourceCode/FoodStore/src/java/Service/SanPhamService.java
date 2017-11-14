@@ -13,5 +13,6 @@ import java.util.ArrayList;
  * @author Duc Anh
  */
 public interface SanPhamService {
-    ArrayList<Sanpham> getAllProduct(int MaLoapSP);
+    ArrayList<Sanpham> getAllProductByMaSP(int MaLoapSP);
+    ArrayList<Sanpham> getAllProduct();
 }
