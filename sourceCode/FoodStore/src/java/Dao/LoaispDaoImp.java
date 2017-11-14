@@ -39,6 +39,7 @@ public class LoaispDaoImp {
           arrayList = (ArrayList<Loaisp>)list;
           session.flush();
           session.getTransaction().commit();
+        
           return arrayList;
       }catch(Exception ex)
       {
