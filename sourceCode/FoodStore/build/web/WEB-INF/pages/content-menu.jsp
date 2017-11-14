@@ -110,14 +110,14 @@
 
                         <h4>Khoảng giá</h4>
                         <br>
-                        <form class="form-horizontal">
+                        <form class="form-horizontal" action="${pageContext.request.contextPath}/product/SearchPrize" method="Get">
 
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="from" class="col-sm-1 col-md-3 control-label">Từ</label>
                                         <div class="col-sm-5 col-md-9">
-                                            <input type="email" class="form-control" id="from" placeholder="VNĐ">
+                                            <input type="text" class="form-control" id="from" placeholder="VNĐ" name="from">
                                         </div>
                                     </div>
                                 </div>
@@ -125,7 +125,7 @@
                                     <div class="form-group">
                                         <label for="to" class="col-sm-1 col-md-3 control-label">Đến</label>
                                         <div class="col-sm-5 col-md-9">
-                                            <input type="email" class="form-control" id="to" placeholder="VNĐ">
+                                            <input type="text" class="form-control" id="to" placeholder="VNĐ" name="to">
                                         </div>
 
                                     </div>

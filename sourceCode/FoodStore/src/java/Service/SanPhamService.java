@@ -16,4 +16,5 @@ public interface SanPhamService {
     ArrayList<Sanpham> getAllProductByMaSP(int MaLoapSP);
     ArrayList<Sanpham> getAllProduct();
     ArrayList<Sanpham> SearchAllProductByName(String name);
+    ArrayList<Sanpham> SearchAllProductByPrice(Long from,Long to);
 }

@@ -32,5 +32,10 @@ public class SanPhamServiceImp implements SanPhamService{
     public ArrayList<Sanpham> SearchAllProductByName(String name) {
         return sanPhamDao.SearchAllProductByName(name);
     }
+
+    @Override
+    public ArrayList<Sanpham> SearchAllProductByPrice(Long from, Long to) {
+        return sanPhamDao.SearchAllProductByPrice(from, to);
+    }
     
 }
