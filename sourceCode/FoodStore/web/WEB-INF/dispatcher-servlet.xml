@@ -31,5 +31,7 @@
     <mvc:resources mapping="/resources/**" location="/resources/" cache-period="31556926"/>
     <mvc:annotation-driven />
 
+    <mvc:resources mapping="/resourcesAdmin/**" location="/resourcesAdmin/" cache-period="31556927"/>
+    <mvc:annotation-driven />
  
 </beans>
