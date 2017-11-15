@@ -76,7 +76,12 @@ public class ProductController {
         mm.put("loaisp", loaispService.getAllcategory());
 
         int count = list.size();
-        if (count % 3 == 0) {
+        System.out.println("cuot la"+count);
+        if(count == 0)
+        {
+           // chuyen sang trang 404
+        }
+        else if (count % 3 == 0) {
             mm.put("count", count / 3);
         } else {
             mm.put("count", (int) count / 3 + 1);
