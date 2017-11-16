@@ -14,4 +14,5 @@ import java.util.ArrayList;
  */
 public interface LoaispDao {
     ArrayList<Loaisp> getAllcategory();
+    Loaisp getLoaiSP(int id);
 }

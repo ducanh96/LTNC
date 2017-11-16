@@ -41,6 +41,7 @@ public class HomeController {
         System.out.println(loaispService.getAllcategory());
         return "pages/menu";
     }
+
     
     
 }

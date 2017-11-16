@@ -19,7 +19,7 @@ import util.HibernateUtil;
  *
  * @author Duc Anh
  */
-public class LoaispDaoImp {
+public class LoaispDaoImp implements LoaispDao{
     
     private Session session;
     
@@ -54,4 +54,29 @@ public class LoaispDaoImp {
 
    
 }
+
+    @Override
+    public Loaisp getLoaiSP(int id) {
+         try{
+          session.getTransaction().begin();
+          String sql = "from Loaisp where id = ?";
+          Query query = session.createQuery(sql);
+          query.setInteger(0, id);
+          List list = query.list();
+          Loaisp loaisp =(Loaisp)list.get(0);
+          session.flush();
+          session.getTransaction().commit();
+        
+          return loaisp;
+      }catch(Exception ex)
+      {
+          if(session.getTransaction().isActive())
+          {
+              session.getTransaction().rollback();
+              
+          }
+          ex.printStackTrace();
+      }
+        return null;
+    }
 }
