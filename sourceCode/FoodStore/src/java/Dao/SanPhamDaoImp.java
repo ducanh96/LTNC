@@ -122,6 +122,29 @@ public class SanPhamDaoImp implements SanPhamDao{
       }
         return null;
     }
+
+    @Override
+    public Sanpham getProductDetail(String maSp) {
+         try{
+          session.getTransaction().begin();
+          String sql = "from Sanpham where maSp = ?";
+          Query query = session.createQuery(sql);
+          query.setString(0,maSp);    
+          List list = query.list();
+          Sanpham sp =(Sanpham)list.get(0);
+          session.flush();
+          session.getTransaction().commit();
+          return sp;
+      }catch(Exception ex)
+      {
+          if(session.getTransaction().isActive())
+          {
+              session.getTransaction().rollback();  
+          }
+          ex.printStackTrace();
+      }
+        return null;
+    }
     
   
     

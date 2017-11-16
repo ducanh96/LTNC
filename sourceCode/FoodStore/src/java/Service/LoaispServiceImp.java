@@ -25,4 +25,9 @@ public class LoaispServiceImp implements LoaispService {
         return loaispDao.getAllcategory();
     }
 
+    @Override
+    public Loaisp getLoaiSP(int id) {
+        return loaispDao.getLoaiSP(id);
+    }
+
 }
