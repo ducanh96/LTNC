@@ -18,4 +18,5 @@ public interface SanPhamDao {
     ArrayList<Sanpham> SearchAllProductByName(String name);
     ArrayList<Sanpham> SearchAllProductByPrice(Long from,Long to);
     Sanpham getProductDetail(String maSp);
+    Boolean InsertProduct(Sanpham sp);
 }
