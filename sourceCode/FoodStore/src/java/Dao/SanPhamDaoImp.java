@@ -12,6 +12,7 @@ import org.eclipse.jdt.internal.compiler.batch.Main;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import util.HibernateUtil;
 
 /**
@@ -144,6 +145,36 @@ public class SanPhamDaoImp implements SanPhamDao{
           ex.printStackTrace();
       }
         return null;
+    }
+
+    @Override
+    public Boolean InsertProduct(Sanpham sp) {
+          try{
+              if(!session.isOpen())
+              {
+                  SessionFactory sessionFactory  = HibernateUtil.getSessionFactory();
+        this.session = sessionFactory.openSession();
+              }
+          session.getTransaction().begin();
+          session.save(sp);
+          session.flush();
+          session.getTransaction().commit();
+          return  true;
+          
+      }catch(Exception ex)
+      {
+          if(session.getTransaction().isActive())
+          {
+              session.getTransaction().rollback();  
+          }
+          ex.printStackTrace();
+      }
+          finally {
+            session.flush();
+            session.close();
+        }
+        
+        return false;
     }
     
   

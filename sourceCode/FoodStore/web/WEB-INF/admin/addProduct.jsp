@@ -708,17 +708,51 @@
                         <div class="col-xs-12">
                             <!-- PAGE CONTENT BEGINS -->
                             <!-- bat dau o day-->
-                            <form class="form-horizontal" role="form">
+                            <form class="form-horizontal" role="form" method="post" action="<c:out value="${pageContext.request.contextPath}/admin/addProduct"/>" modelAttribute="uploadForm" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <label class="control-label col-xs-12 col-sm-3 no-padding-right" for="email">Mã sản phẩm:</label>
 
                                     <div class="col-xs-12 col-sm-9">
-                                        <div class="clearfix">
-                                            <input type="email" name="email" id="email" class="col-xs-12 col-sm-6" disabled="disable" value="<c:out value="${sanPham.maSp}"/>"" />
+                                        <div class="col-xs-12 col-sm-6">
+                                            <div class="clearfix">
+                                                <input type="text" name="maSp" id="email" class="form-control" value="${sanPham.maSp}" />
 
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="space-2"></div>
+
+
+
+
+                                <div class="form-group">
+                                    <label class="control-label col-xs-12 col-sm-3 no-padding-right" for="form-field-select-3">Loại món</label>
+
+                                    <div class="col-xs-12 col-sm-9">
+                                        <div class="clearfix">
+                                            <div class="col-xs-12 col-sm-6">
+                                                <!--                                            <input type="text" name="email" id="email" class="col-xs-12 col-sm-6" />-->
+                                                <select name="maLoaiSp" class="form-control chosen-select" id="form-field-select-3" data-placeholder="Choose a State...">
+                                                    <option value="">  </option>
+                                                    <c:forEach var="item" items="${loaiSp}">
+
+                                                        <option value="${item.id}">${item.tenLoaiSp}</option>
+                                                    </c:forEach>
+
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+
+
+
 
                                 <div class="space-2"></div>
 
@@ -726,11 +760,30 @@
                                     <label class="control-label col-xs-12 col-sm-3 no-padding-right" for="name">Tên món:</label>
 
                                     <div class="col-xs-12 col-sm-9">
-                                        <div class="clearfix">
-                                            <input type="text" id="name" name="name" class="col-xs-12 col-sm-6" value="${sanPham.tenSp}" />
+                                        <div class="col-xs-12 col-sm-6">
+                                            <div class="clearfix">
+                                                <input type="text" id="name" name="tenSp"  class="form-control" value="${sanPham.tenSp}" />
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="space-2"></div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-xs-12 col-sm-3 no-padding-right" for="name">Giá món:</label>
+
+                                    <div class="col-xs-12 col-sm-9">
+                                        <div class="col-xs-12 col-sm-4">
+                                            <div class="clearfix">
+                                                <input type="text" id="name" name="giaSp" placeholder="VD:10000"  class="form-control" value="${sanPham.giaSp}" /> 
+                                                 
+                                            </div>
+                                        </div>
+                                                
+                                    </div>
+                                </div>
+
 
                                 <div class="space-2"></div>
 
@@ -743,38 +796,23 @@
                                     <label class="control-label col-xs-12 col-sm-3 no-padding-right">Trạng thái</label>
 
                                     <div class="col-xs-12 col-sm-9">
-                                        <c:choose>
-                                            <c:when test="${sanPham.trangThai == true}">
-                                                <div>
-                                                    <label class="line-height-1 blue">
-                                                        <input name="gender" value="1" type="radio" class="ace" checked="checked"/>
-                                                        <span class="lbl">Hoạt động</span>
-                                                    </label>
-                                                </div>
 
-                                                <div>
-                                                    <label class="line-height-1 blue">
-                                                        <input name="gender" value="2" type="radio" class="ace" />
-                                                        <span class="lbl">Không hoạt động</span>
-                                                    </label>
-                                                </div>
-                                            </c:when>
-                                            <c:otherwise>
-                                                <div>
-                                                    <label class="line-height-1 blue">
-                                                        <input name="gender" value="1" type="radio" class="ace"/>
-                                                        <span class="lbl">Hoạt động</span>
-                                                    </label>
-                                                </div>
+                                        <div class="col-xs-12 col-sm-6 clearfix">
+                                            <div>
+                                                <label class="line-height-1 blue">
+                                                    <input name="trangThai" value="true" type="radio" class="ace" checked="checked"/>
+                                                    <span class="lbl">Hoạt động</span>
+                                                </label>
+                                            </div>
 
-                                                <div>
-                                                    <label class="line-height-1 blue">
-                                                        <input name="gender" value="2" type="radio" class="ace" checked="checked"/>
-                                                        <span class="lbl">Không hoạt động</span>
-                                                    </label>
-                                                </div>
-                                            </c:otherwise>
-                                        </c:choose>
+                                            <div>
+                                                <label class="line-height-1 blue">
+                                                    <input name="trangThai" value="false" type="radio" class="ace" />
+                                                    <span class="lbl">Không hoạt động</span>
+                                                </label>
+                                            </div>
+                                        </div>
+
 
                                     </div>
                                 </div>
@@ -796,10 +834,11 @@
 
                                             <div class="form-group">
                                                 <div class="col-xs-12 col-sm-9">
-                                                    <div class="clearfix">
-                                                        <input multiple="" type="file" id="id-input-file-3" />
+                                                    <div class="col-xs-12 col-sm-6">
+                                                        <div class="clearfix">
+                                                            <input multiple="" type="file" id="id-input-file-3" name="fileUpload" />
+                                                        </div>
                                                     </div>
-
                                                 </div>
                                             </div>
 
@@ -818,27 +857,32 @@
                                     <label class="control-label col-xs-12 col-sm-3 no-padding-right" for="comment">Mô tả</label>
 
                                     <div class="col-xs-12 col-sm-9">
-                                        <div class="clearfix">
-                                            <textarea class="input-xlarge" name="comment" id="comment"></textarea>
+                                        <div class="col-xs-12 col-sm-6">
+                                            <div class="clearfix">
+                                                <!--                                                <textarea class="input-xlarge" name="comment" id="comment"></textarea>-->
+                                                <textarea name="motaSp" class="form-control" id="form-field-8" placeholder="Mô tả món ăn" ></textarea>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="space-8"></div>
 
-                                <div class="form-group">
-                                    <div class="col-xs-12 col-sm-4 col-sm-offset-3">
-                                        <label>
-                                            <input name="agree" id="agree" type="checkbox" class="ace" />
-                                            <span class="lbl"> I accept the policy</span>
-                                        </label>
-                                    </div>
-                                </div>
+
 
                                 <div class="form-actions center">
-                                    <button type="button" class="btn btn-sm btn-success">
+                                    <!--                                    <button type="button" class="btn btn-sm btn-success">
+                                                                            Submit
+                                                                            <i class="ace-icon fa fa-arrow-right icon-on-right bigger-110"></i>
+                                                                        </button>-->
+                                    <button type="submit" class="btn btn-success">
                                         Submit
                                         <i class="ace-icon fa fa-arrow-right icon-on-right bigger-110"></i>
+                                    </button>
+
+                                    <button class="btn" type="reset">
+                                        <i class="ace-icon fa fa-undo bigger-110"></i>
+                                        Reset
                                     </button>
                                 </div>
 
