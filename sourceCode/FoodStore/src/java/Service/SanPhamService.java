@@ -19,5 +19,5 @@ public interface SanPhamService {
     ArrayList<Sanpham> SearchAllProductByPrice(Long from,Long to);
     Sanpham getProductDetail(String maSp);
     Boolean InsertProduct(Sanpham sp);
-    
+    Boolean UpdateProduct(Sanpham sp,String maSp);
 }

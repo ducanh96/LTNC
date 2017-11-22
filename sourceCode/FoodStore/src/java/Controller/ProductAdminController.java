@@ -40,10 +40,56 @@ public class ProductAdminController {
     private SanPhamService sanPhamService;
 
     @RequestMapping(value = "/products/{maSp}", method = RequestMethod.GET)
-    public String Getproduct(ModelMap mm, @PathVariable(value = "maSp") String maSp) {
-        System.out.println(maSp);
+    public String UpdateProduct(ModelMap mm, @PathVariable(value = "maSp") String maSp) {
+        System.out.println(sanPhamService.getProductDetail(maSp));
+        mm.put("loaiSp", loaispService.getAllcategory());
         mm.put("sanPham", (Sanpham) sanPhamService.getProductDetail(maSp));
-        return "admin/editProduct";
+        return "admin/themProduct";
+    }
+
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    public String UpdateProduct(ModelMap mm, HttpServletRequest request, HttpServletResponse response,
+            @RequestParam(value = "fileUpload", required = false) MultipartFile fileUpload, @ModelAttribute(value = "sanPham") Sanpham sanPham,
+            @RequestParam(value = "maLoaiSp") String maLoaiSp) {
+        System.out.println(sanPham.getMaSp());
+        System.out.println(maLoaiSp);
+        System.out.println(sanPham.getTenSp());
+        System.out.println(sanPham.getTrangThai());
+        System.out.println(sanPham.getMotaSp());
+        System.out.println(sanPham.getGiaSp());
+        String path = request.getSession().getServletContext().getRealPath("/") + "resourcesAdmin/uploads/";
+        Loaisp l = loaispService.getLoaiSP(Integer.parseInt(maLoaiSp));
+        sanPham.setLoaisp(l);
+        if (fileUpload != null && false) {
+            try {
+                System.out.println(fileUpload.toString().length());
+                
+                FileUtils.forceMkdir(new File(path));
+                File upload = new File(path + fileUpload.getOriginalFilename());
+                fileUpload.transferTo(upload);
+                mm.put("fileUpload", fileUpload.getOriginalFilename());
+
+                String src = "/resourcesAdmin/uploads/" + fileUpload.getOriginalFilename();
+                sanPham.setAnhSp(src);
+
+                if (sanPhamService.UpdateProduct(sanPham,"che001")) {
+                    return "admin/sucess";
+                }
+
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        } else {
+            try {
+                System.out.println("haha");
+                if (sanPhamService.UpdateProduct(sanPham,"che001")) {
+                    return "admin/sucess";
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
+        return "admin/blank_jsp";
     }
 
     @RequestMapping("/index2")
@@ -63,8 +109,9 @@ public class ProductAdminController {
         return "admin/addProduct";
     }
 
+    //them san pham
     @RequestMapping(value = "/addProduct", method = RequestMethod.POST)
-    public String upload(ModelMap mm, HttpServletRequest request, HttpServletResponse response,
+    public String AddProduct(ModelMap mm, HttpServletRequest request, HttpServletResponse response,
             @RequestParam(value = "fileUpload", required = false) MultipartFile fileUpload, @ModelAttribute(value = "sanPham") Sanpham sanPham,
             @RequestParam(value = "maLoaiSp") String maLoaiSp) {
         System.out.println(sanPham.getMaSp());
@@ -72,7 +119,7 @@ public class ProductAdminController {
         System.out.println(sanPham.getTenSp());
         System.out.println(sanPham.getTrangThai());
         System.out.println(sanPham.getMotaSp());
-         System.out.println(sanPham.getGiaSp());
+        System.out.println(sanPham.getGiaSp());
         String path = request.getSession().getServletContext().getRealPath("/") + "resourcesAdmin/uploads/";
 
         if (fileUpload != null) {
@@ -86,7 +133,7 @@ public class ProductAdminController {
                 sanPham.setAnhSp(src);
                 Loaisp l = loaispService.getLoaiSP(Integer.parseInt(maLoaiSp));
                 sanPham.setLoaisp(l);
-                if(sanPhamService.InsertProduct(sanPham)){
+                if (sanPhamService.InsertProduct(sanPham)) {
                     return "admin/sucess";
                 }
 
