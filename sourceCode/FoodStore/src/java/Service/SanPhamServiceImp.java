@@ -47,5 +47,10 @@ public class SanPhamServiceImp implements SanPhamService{
     public Boolean InsertProduct(Sanpham sp) {
         return sanPhamDao.InsertProduct(sp);
     }
+
+    @Override
+    public Boolean UpdateProduct(Sanpham sp,String maSp) {
+        return sanPhamDao.UpdateProduct(sp,maSp);
+    }
     
 }
