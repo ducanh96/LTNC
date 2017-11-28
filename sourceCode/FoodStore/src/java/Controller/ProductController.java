@@ -60,6 +60,10 @@ public class ProductController {
         mm.put("loaisp", loaispService.getAllcategory());
 
         int count = list.size();
+        if(count == 0)
+        {
+           return "pages/menuEmpty";
+        }
         if (count % 3 == 0) {
             mm.put("count", count / 3);
         } else {
@@ -79,7 +83,7 @@ public class ProductController {
         System.out.println("cuot la"+count);
         if(count == 0)
         {
-           // chuyen sang trang 404
+           return "pages/menuEmpty";
         }
         else if (count % 3 == 0) {
             mm.put("count", count / 3);

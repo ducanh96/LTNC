@@ -28,7 +28,7 @@ public class CategoryAdminController {
     @Autowired
     private SanPhamService sanPhamService;
     
-    @RequestMapping("/index")
+    @RequestMapping("/categories")
     public String Index(ModelMap mm) {
         mm.put("loaisp", loaispService.getAllcategory());
         return "admin/content-category";

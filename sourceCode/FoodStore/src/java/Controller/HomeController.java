@@ -36,12 +36,19 @@ public class HomeController {
             mm.put("count", count/3);
         }
         else{
+            
             mm.put("count",(int)count/3 +1);
         }
         System.out.println(loaispService.getAllcategory());
         return "pages/menu";
     }
 
+    
+     @RequestMapping(value = "/TrangChu")
+     public String Home(){
+         return "pages/home";
+     }
+     
     
     
 }

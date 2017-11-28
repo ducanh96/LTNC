@@ -39,18 +39,28 @@ public class ProductAdminController {
     @Autowired
     private SanPhamService sanPhamService;
 
+    
+     @RequestMapping("/index")
+    public String Index(ModelMap mm) {
+        mm.put("loaisp", loaispService.getAllcategory());
+        return "admin/content-category";
+    };
+    
+    
+    
+    
     @RequestMapping(value = "/products/{maSp}", method = RequestMethod.GET)
     public String UpdateProduct(ModelMap mm, @PathVariable(value = "maSp") String maSp) {
         System.out.println(sanPhamService.getProductDetail(maSp));
         mm.put("loaiSp", loaispService.getAllcategory());
         mm.put("sanPham", (Sanpham) sanPhamService.getProductDetail(maSp));
-        return "admin/themProduct";
+        return "admin/editProduct";
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
-    public String UpdateProduct(ModelMap mm, HttpServletRequest request, HttpServletResponse response,
+    public String UpdateProduct(HttpServletRequest request, HttpServletResponse response,
             @RequestParam(value = "fileUpload", required = false) MultipartFile fileUpload, @ModelAttribute(value = "sanPham") Sanpham sanPham,
-            @RequestParam(value = "maLoaiSp") String maLoaiSp) {
+            @RequestParam(value = "maLoaiSp") String maLoaiSp , @RequestParam(value = "maSpp") String maSpp) {
         System.out.println(sanPham.getMaSp());
         System.out.println(maLoaiSp);
         System.out.println(sanPham.getTenSp());
@@ -60,21 +70,21 @@ public class ProductAdminController {
         String path = request.getSession().getServletContext().getRealPath("/") + "resourcesAdmin/uploads/";
         Loaisp l = loaispService.getLoaiSP(Integer.parseInt(maLoaiSp));
         sanPham.setLoaisp(l);
-        if (fileUpload != null && false) {
+        if (fileUpload != null) {
             try {
                 System.out.println(fileUpload.toString().length());
                 
                 FileUtils.forceMkdir(new File(path));
                 File upload = new File(path + fileUpload.getOriginalFilename());
                 fileUpload.transferTo(upload);
-                mm.put("fileUpload", fileUpload.getOriginalFilename());
+             
 
                 String src = "/resourcesAdmin/uploads/" + fileUpload.getOriginalFilename();
                 sanPham.setAnhSp(src);
 
-                if (sanPhamService.UpdateProduct(sanPham,"che001")) {
-                    return "admin/sucess";
-                }
+                sanPhamService.UpdateProduct(sanPham,maSpp);
+                    
+              
 
             } catch (IOException ex) {
                 ex.printStackTrace();
@@ -82,14 +92,14 @@ public class ProductAdminController {
         } else {
             try {
                 System.out.println("haha");
-                if (sanPhamService.UpdateProduct(sanPham,"che001")) {
-                    return "admin/sucess";
-                }
+                sanPhamService.UpdateProduct(sanPham,maSpp);
+                   
+                
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
         }
-        return "admin/blank_jsp";
+        return "redirect:" + "index";
     }
 
     @RequestMapping("/index2")
