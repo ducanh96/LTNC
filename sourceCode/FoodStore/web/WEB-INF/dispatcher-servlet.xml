@@ -27,6 +27,9 @@
     
     <bean id="pDAO" class="Dao.SanPhamDaoImp" />
     <bean id="pService" class="Service.SanPhamServiceImp" />
+    
+    <bean id="sDAO" class="Dao.NhanVienDaoImp" />
+    <bean id="sService" class="Service.NhanVienServiceImp" />
 
     <mvc:resources mapping="/resources/**" location="/resources/" cache-period="31556926"/>
     <mvc:annotation-driven />
