@@ -3,9 +3,11 @@
     Created on : Nov 6, 2017, 11:18:09 PM
     Author     : Duc Anh
 --%>
-
+<%@page import="org.springframework.web.bind.annotation.ModelAttribute"%>
+<%@page import="Domain.GioHang.Item" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
+<%@taglib prefix="f" uri="http://www.springframework.org/tags/form" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -15,6 +17,7 @@
     </head>
     <body>
         <div class="menu">
+
             <div class="container">
                 <div class="menu-top">
                     <div class="col-md-4 menu-left animated wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="500ms">
@@ -29,69 +32,77 @@
                 </div>
 
                 <div class="col-md-9 blog-header">
-                    
-                 
+
+
                     <c:forEach var="i" begin="0" end="${count-1}" step="1" varStatus="loopOut">
-                        <% System.out.println("ket qua:"+pageContext.findAttribute("count")); %>
-                        
+                        <% System.out.println("ket qua:" + pageContext.findAttribute("count")); %>
+
                         <div class="blog-head">
-                            <%! int dem = 0; %>
+                            <%! int dem = 0;%>
                             <c:forEach var="item" end="${loopOut.index*3+2}" begin="${loopOut.index*3}" varStatus="loopInner">
-                            <% dem++; %>
-                             <% System.out.println(dem);               
-                             %>  
-                             <c:if test="${loopInner.current < listProduct.size()}">
-                                  <div class="col-md-4 blog-top">
-                            <div class="blog-in">
-                                <a href="single.html"><img class="img-responsive" src="<c:url value="/resources/images/bl.jpg"/>" alt=" "></a>
-                                <div class="blog-grid">
-                                    <h3><a href="single.html">${listProduct[item].tenSp}</a></h3>
-                                    <div class="more">						
-                                        <a class="link link-yaku">
-                                            <h2><span>${listProduct[item].giaSp}</span> <span>đồng</span></h2>
-                                        </a>
+                                <% dem++; %>
+                                <% System.out.println(dem);
+                                %>  
+                                <c:if test="${loopInner.current < listProduct.size()}">
+
+
+                                    <div class="col-md-4 blog-top">
+                                        <div class="blog-in">
+                                            <a href="single.html"><img class="img-responsive" src="<c:url value="${listProduct[item].anhSp}"/>" alt=" "></a>
+                                            <div class="blog-grid">
+                                                <h3><a href="single.html">${listProduct[item].tenSp}</a></h3>
+                                                <div class="more">						
+                                                    <a class="link link-yaku">
+                                                        <h2><span>${listProduct[item].giaSp}</span> <span>đồng</span></h2>
+                                                    </a>
+                                                </div>
+
+<!--                                                <a href="${pageContext.request.contextPath}/home/addCart?maSp=${listProduct[item].maSp}" class="btn btn-1 btn-block btn-success"><i class="glyphicon glyphicon-shopping-cart"></i> Thêm vào giỏ hàng</a>-->
+                                                <button type="button" id="${listProduct[item].maSp}" class="btn btn-1 btn-block btn-success"><i class="glyphicon glyphicon-shopping-cart"></i> Thêm vào giỏ hàng</button>
+                                                <button type="button" class="btn btn-1 btn-block btn-success"><i class="glyphicon glyphicon-usd"></i> Mua luôn</button>
+
+
+
+
+
+
+
+                                                <div class="more">						
+                                                    <a class="link link-yaku" href="single.html">
+
+                                                        <span>R</span><span>e</span><span>a</span><span>d</span> <span>M</span><span>o</span><span>r</span><span>e</span>					
+                                                    </a>
+                                                </div>
+                                            </div>					
+                                        </div>
                                     </div>
 
-                                    <button type="button" class="btn btn-1 btn-block btn-success"><i class="glyphicon glyphicon-shopping-cart"></i> Thêm vào giỏ hàng</button>
-                                    <button type="button" class="btn btn-1 btn-block btn-success"><i class="glyphicon glyphicon-usd"></i> Mua luôn</button>
+                                </c:if>
 
-                                    <div class="more">						
-                                        <a class="link link-yaku" href="single.html">
 
-                                            <span>R</span><span>e</span><span>a</span><span>d</span> <span>M</span><span>o</span><span>r</span><span>e</span>					
-                                        </a>
-                                    </div>
-                                </div>					
-                            </div>
+                                <% if (dem % 3 == 0) {
+                                        System.out.println(dem);
+                                %>
+                                <div class="clearfix"> </div>
+                                <%
+                                    };
+                                %>
+
+
+                            </c:forEach>
+
                         </div>
-                             </c:if>
-                            
-                               
-                              <% if(dem %3 ==0)
-                              {
-                                   System.out.println(dem); 
-                              %>
-                                  <div class="clearfix"> </div>
-                                  <%
-                                      };
-                                       %>
-                                      
-                                       
-                        </c:forEach>
-                             
-                            </div>
-                        
+
                     </c:forEach>
-                   
-                    
-                         
-                      
-                         
-                          
-                        
-                    </div>
-                   
-               
+
+
+
+
+
+
+                </div>
+
+
 
                 <div class="col-md-3 categories-grid">
                     <div class="search-in animated wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="500ms">
@@ -163,9 +174,9 @@
                         <h4>Categories</h4>
                         <ul class="popular">
                             <c:forEach var="item" items="${loaisp}">
-                                 <li><a href="${pageContext.request.contextPath}/product/list?MaLoaiSP=${item.id}"><i class="glyphicon glyphicon-menu-right"> </i>${item.tenLoaiSp}</a></li>
-                            </c:forEach>
-                      
+                                <li><a href="${pageContext.request.contextPath}/product/list?MaLoaiSP=${item.id}"><i class="glyphicon glyphicon-menu-right"> </i>${item.tenLoaiSp}</a></li>
+                                </c:forEach>
+
                         </ul>
                     </div>
                     <div class="blog-bottom animated wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="500ms">
@@ -201,5 +212,57 @@
             </div>
 
         </div>
+        <div id="content">
+
+        </div>
+
+        <script src="<c:url value="/resources/js/sweetAlert.js"/>"></script>
+        <script type="text/javascript">
+            $(function () {
+                var deleteLink = $("button:contains(' Thêm vào giỏ hàng')");
+
+                $(deleteLink).click(function (event) {
+
+                    var maSp = $(this).attr("id");
+                   
+                    url = "${pageContext.request.contextPath}/home/themGioHang";
+                    var data = {maSp: maSp};
+                    var dataType = 'json';
+                    var success = function (dl) {
+                        if (dl.length > 0)
+                        {
+                            var tam = dl;
+                            swal("Thành công!", "Thêm sản phẩm vào giỏ hàng thành công", "success");
+                           
+                        }
+                    };
+                    jQuery.get(url, data, success, dataType);
+
+
+//                    $.ajax({
+//                        type: "GET",
+//                        contentType: "application/json; charset=utf-8",
+//                        url: "${pageContext.request.contextPath}/home/themGioHang",
+//                        data: {maSp: maSp},
+//                        dataType: 'json',
+//                        timeout: 100000,
+//                        success: function (data) {
+//                            console.log("SUCCESS: ", data);
+//                            alert(data);
+//                        },
+//                        error: function (e) {
+//                            console.log("ERROR: ", e);
+//                            alert(e.toString());
+//                        },
+//                        done: function (e) {
+//                            console.log("DONE");
+//                        }
+//                    });
+
+                });
+            });
+        </script>
+
+
     </body>
 </html>

@@ -8,7 +8,6 @@ package Dao;
 import Domain.Sanpham;
 import java.util.ArrayList;
 import java.util.List;
-import org.eclipse.jdt.internal.compiler.batch.Main;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -31,6 +30,10 @@ public class SanPhamDaoImp implements SanPhamDao {
     @Override
     public ArrayList<Sanpham> getAllProductByMaSP(int MaLoaiSP) {
         try {
+             if (!session.isOpen()) {
+                SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+                this.session = sessionFactory.openSession();
+            }
             session.getTransaction().begin();
             String sql = "from Sanpham where MaLoaiSP = ?";
             Query query = session.createQuery(sql);
@@ -53,6 +56,10 @@ public class SanPhamDaoImp implements SanPhamDao {
     @Override
     public ArrayList<Sanpham> getAllProduct() {
         try {
+             if (!session.isOpen()) {
+                SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+                this.session = sessionFactory.openSession();
+            }
             session.getTransaction().begin();
             String sql = "from Sanpham";
             Query query = session.createQuery(sql);
@@ -74,6 +81,10 @@ public class SanPhamDaoImp implements SanPhamDao {
     @Override
     public ArrayList<Sanpham> SearchAllProductByName(String name) {
         try {
+             if (!session.isOpen()) {
+                SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+                this.session = sessionFactory.openSession();
+            }
             session.getTransaction().begin();
             String sql = "from Sanpham where tenSp like ?";
             Query query = session.createQuery(sql);
@@ -96,6 +107,10 @@ public class SanPhamDaoImp implements SanPhamDao {
     @Override
     public ArrayList<Sanpham> SearchAllProductByPrice(Long from, Long to) {
         try {
+             if (!session.isOpen()) {
+                SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+                this.session = sessionFactory.openSession();
+            }
             session.getTransaction().begin();
             String sql = "from Sanpham where giaSp > ? and giaSp <= ?";
             Query query = session.createQuery(sql);
@@ -119,6 +134,10 @@ public class SanPhamDaoImp implements SanPhamDao {
     @Override
     public Sanpham getProductDetail(String maSp) {
         try {
+             if (!session.isOpen()) {
+                SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+                this.session = sessionFactory.openSession();
+            }
             session.getTransaction().begin();
             String sql = "from Sanpham where maSp = ?";
             Query query = session.createQuery(sql);
@@ -134,6 +153,7 @@ public class SanPhamDaoImp implements SanPhamDao {
             }
             ex.printStackTrace();
         }
+       
         return null;
     }
 
@@ -179,6 +199,7 @@ public class SanPhamDaoImp implements SanPhamDao {
            s.setGiaSp(sp.getGiaSp());
            s.setLoaisp(sp.getLoaisp());
            s.setTrangThai(sp.getTrangThai());
+           s.setMotaSp(sp.getMotaSp());
            session.update(s);
            session.flush();
            session.getTransaction().commit();
@@ -188,9 +209,6 @@ public class SanPhamDaoImp implements SanPhamDao {
                 session.getTransaction().rollback();
             }
             ex.printStackTrace();
-        } finally {
-            session.flush();
-            session.close();
         }
         return false;
     }

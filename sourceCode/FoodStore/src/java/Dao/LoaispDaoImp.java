@@ -30,6 +30,10 @@ public class LoaispDaoImp implements LoaispDao{
     
     public ArrayList<Loaisp> getAllcategory() {
       try{
+           if (!session.isOpen()) {
+                SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+                this.session = sessionFactory.openSession();
+            }
           session.getTransaction().begin();
           String sql = "from Loaisp";
           Query query = session.createQuery(sql);
@@ -58,6 +62,10 @@ public class LoaispDaoImp implements LoaispDao{
     @Override
     public Loaisp getLoaiSP(int id) {
          try{
+              if (!session.isOpen()) {
+                SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+                this.session = sessionFactory.openSession();
+            }
           session.getTransaction().begin();
           String sql = "from Loaisp where id = ?";
           Query query = session.createQuery(sql);

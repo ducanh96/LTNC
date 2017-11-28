@@ -57,10 +57,10 @@
                     <a href="#" class="navicon"></a>
                     <div class="toggle">
                         <ul class="toggle-menu">
-                            <li><a class="active" href="index.html">Home</a></li>
-                            <li><a  href="menu.html">Menu</a></li>
+                            <li><a class="active" href="${pageContext.request.contextPath}/home/TrangChu">Home</a></li>
+                            <li><a  href="${pageContext.request.contextPath}/home/index">Menu</a></li>
                             <li><a  href="blog.html">Blog</a></li>
-                            <li><a href="mycart.html">Cart</a></li>		
+                            <li><a href="${pageContext.request.contextPath}/home/mycart">Cart</a></li>		
                             <li><a  href="contact.html">Contact</a></li>
                         </ul>
                     </div>

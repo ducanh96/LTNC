@@ -422,7 +422,7 @@
 
             <ul class="nav nav-list">
                 <li class="">
-                    <a href="index.html">
+                    <a href="${pageContext.request.contextPath}/admin/index">
                         <i class="menu-icon fa fa-tachometer"></i>
                         <span class="menu-text"> Loại món ăn </span>
                     </a>
