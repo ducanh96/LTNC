@@ -20,4 +20,5 @@ public interface SanPhamDao {
     Sanpham getProductDetail(String maSp);
     Boolean InsertProduct(Sanpham sp);
     Boolean UpdateProduct(Sanpham sp,String maSp);
+    Boolean DeleteProduct(String maSp);
 }

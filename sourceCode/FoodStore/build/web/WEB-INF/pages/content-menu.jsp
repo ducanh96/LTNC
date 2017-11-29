@@ -215,7 +215,7 @@
         <div id="content">
 
         </div>
-
+      
         <script src="<c:url value="/resources/js/sweetAlert.js"/>"></script>
         <script type="text/javascript">
             $(function () {

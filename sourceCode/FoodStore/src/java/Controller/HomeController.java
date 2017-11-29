@@ -26,6 +26,9 @@ public class HomeController {
     @Autowired
     private SanPhamService sanPhamService;
     
+    
+    
+    
     @RequestMapping(value = "/index")
     public String Index(ModelMap mm){
         mm.put("loaisp", loaispService.getAllcategory());

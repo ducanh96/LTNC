@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.websocket.server.PathParam;
 import org.apache.commons.io.FileUtils;
+import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -23,6 +24,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
@@ -39,12 +41,13 @@ public class ProductAdminController {
     @Autowired
     private SanPhamService sanPhamService;
 
-    
-     @RequestMapping("/index")
+    @RequestMapping("/index")
     public String Index(ModelMap mm) {
         mm.put("loaisp", loaispService.getAllcategory());
         return "admin/content-category";
-    };
+    }
+
+    ;
     
     
     
@@ -60,7 +63,7 @@ public class ProductAdminController {
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public String UpdateProduct(HttpServletRequest request, HttpServletResponse response,
             @RequestParam(value = "fileUpload", required = false) MultipartFile fileUpload, @ModelAttribute(value = "sanPham") Sanpham sanPham,
-            @RequestParam(value = "maLoaiSp") String maLoaiSp , @RequestParam(value = "maSpp") String maSpp) {
+            @RequestParam(value = "maLoaiSp") String maLoaiSp, @RequestParam(value = "maSpp") String maSpp) {
         System.out.println(sanPham.getMaSp());
         System.out.println(maLoaiSp);
         System.out.println(sanPham.getTenSp());
@@ -73,18 +76,15 @@ public class ProductAdminController {
         if (fileUpload != null) {
             try {
                 System.out.println(fileUpload.toString().length());
-                
+
                 FileUtils.forceMkdir(new File(path));
                 File upload = new File(path + fileUpload.getOriginalFilename());
                 fileUpload.transferTo(upload);
-             
 
                 String src = "/resourcesAdmin/uploads/" + fileUpload.getOriginalFilename();
                 sanPham.setAnhSp(src);
 
-                sanPhamService.UpdateProduct(sanPham,maSpp);
-                    
-              
+                sanPhamService.UpdateProduct(sanPham, maSpp);
 
             } catch (IOException ex) {
                 ex.printStackTrace();
@@ -92,9 +92,8 @@ public class ProductAdminController {
         } else {
             try {
                 System.out.println("haha");
-                sanPhamService.UpdateProduct(sanPham,maSpp);
-                   
-                
+                sanPhamService.UpdateProduct(sanPham, maSpp);
+
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
@@ -152,6 +151,23 @@ public class ProductAdminController {
             }
         }
         return "admin/blank_jsp";
+    }
+
+    @RequestMapping(value = "/removeProduct/{maSp}", method = RequestMethod.GET)
+    public String RemoveProduct(ModelMap mm,@PathVariable(value = "maSp") String maSp) {
+     
+        try {
+          
+
+         sanPhamService.DeleteProduct(maSp);
+           
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+            Sanpham sp = sanPhamService.getProductDetail(maSp);
+          mm.put("products",sanPhamService.getAllProductByMaSP(sp.getLoaisp().getId()));
+        return "admin/category_product_detail";
+       
     }
 
 }

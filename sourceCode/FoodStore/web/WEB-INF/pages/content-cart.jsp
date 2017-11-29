@@ -39,7 +39,7 @@
                                         <tr>
                                             <td class="col-sm-8 col-md-6">
                                                 <div class="media">
-                                                    <a class="thumbnail pull-left" href="#"> <img class="media-object" src="${c.getValue().getProduct().getAnhSp()}" style="width: 72px; height: 72px;"> </a>
+                                                    <a class="thumbnail pull-left" href="#"> <img class="media-object" src="${pageContext.request.contextPath}${c.getValue().getProduct().getAnhSp()}" style="width: 72px; height: 72px;"> </a>
                                                     <div class="media-body">
                                                         <h4 class="media-heading"><a href="#">${c.getValue().getProduct().getTenSp()}</a></h4>
 

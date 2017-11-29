@@ -5,8 +5,12 @@
  */
 package Controller;
 
+import Domain.Loaisp;
+import Domain.Sanpham;
 import Service.LoaispServiceImp;
 import Service.SanPhamService;
+import java.util.ArrayList;
+import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -30,7 +34,15 @@ public class CategoryAdminController {
     
     @RequestMapping("/categories")
     public String Index(ModelMap mm) {
-        mm.put("loaisp", loaispService.getAllcategory());
+        ArrayList<Loaisp> arrLsp = loaispService.getAllcategory();
+        
+        for(Loaisp item : arrLsp)
+        {
+             ArrayList<Sanpham> arrSp = sanPhamService.getAllProductByMaSP(item.getId());
+             item.setSanphams((Set)arrSp);
+        }
+       
+        mm.put("loaisp", arrLsp);
         return "admin/content-category";
     };
     

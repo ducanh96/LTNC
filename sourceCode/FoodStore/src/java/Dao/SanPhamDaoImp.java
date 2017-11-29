@@ -30,12 +30,12 @@ public class SanPhamDaoImp implements SanPhamDao {
     @Override
     public ArrayList<Sanpham> getAllProductByMaSP(int MaLoaiSP) {
         try {
-             if (!session.isOpen()) {
+            if (!session.isOpen()) {
                 SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
                 this.session = sessionFactory.openSession();
             }
             session.getTransaction().begin();
-            String sql = "from Sanpham where MaLoaiSP = ?";
+            String sql = "from Sanpham where trangThai = true and MaLoaiSP = ?";
             Query query = session.createQuery(sql);
             query.setInteger(0, MaLoaiSP);
             List list = query.list();
@@ -56,12 +56,12 @@ public class SanPhamDaoImp implements SanPhamDao {
     @Override
     public ArrayList<Sanpham> getAllProduct() {
         try {
-             if (!session.isOpen()) {
+            if (!session.isOpen()) {
                 SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
                 this.session = sessionFactory.openSession();
             }
             session.getTransaction().begin();
-            String sql = "from Sanpham";
+            String sql = "from Sanpham where trangThai = true";
             Query query = session.createQuery(sql);
             List list = query.list();
             ArrayList<Sanpham> arrayList = new ArrayList<Sanpham>();
@@ -81,7 +81,7 @@ public class SanPhamDaoImp implements SanPhamDao {
     @Override
     public ArrayList<Sanpham> SearchAllProductByName(String name) {
         try {
-             if (!session.isOpen()) {
+            if (!session.isOpen()) {
                 SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
                 this.session = sessionFactory.openSession();
             }
@@ -107,7 +107,7 @@ public class SanPhamDaoImp implements SanPhamDao {
     @Override
     public ArrayList<Sanpham> SearchAllProductByPrice(Long from, Long to) {
         try {
-             if (!session.isOpen()) {
+            if (!session.isOpen()) {
                 SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
                 this.session = sessionFactory.openSession();
             }
@@ -134,7 +134,7 @@ public class SanPhamDaoImp implements SanPhamDao {
     @Override
     public Sanpham getProductDetail(String maSp) {
         try {
-             if (!session.isOpen()) {
+            if (!session.isOpen()) {
                 SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
                 this.session = sessionFactory.openSession();
             }
@@ -153,7 +153,7 @@ public class SanPhamDaoImp implements SanPhamDao {
             }
             ex.printStackTrace();
         }
-       
+
         return null;
     }
 
@@ -184,25 +184,52 @@ public class SanPhamDaoImp implements SanPhamDao {
     }
 
     @Override
-    public Boolean UpdateProduct(Sanpham sp,String maSp) {
+    public Boolean UpdateProduct(Sanpham sp, String maSp) {
 
-       
         try {
             if (!session.isOpen()) {
                 SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
                 this.session = sessionFactory.openSession();
             }
-           session.getTransaction().begin();
-           Sanpham s = (Sanpham)session.get(Sanpham.class, maSp);
-           s.setTenSp(sp.getTenSp());
-           s.setAnhSp(sp.getAnhSp());
-           s.setGiaSp(sp.getGiaSp());
-           s.setLoaisp(sp.getLoaisp());
-           s.setTrangThai(sp.getTrangThai());
-           s.setMotaSp(sp.getMotaSp());
-           session.update(s);
-           session.flush();
-           session.getTransaction().commit();
+            session.getTransaction().begin();
+            Sanpham s = (Sanpham) session.get(Sanpham.class, maSp);
+            s.setTenSp(sp.getTenSp());
+            s.setAnhSp(sp.getAnhSp());
+            s.setGiaSp(sp.getGiaSp());
+            s.setLoaisp(sp.getLoaisp());
+            s.setTrangThai(sp.getTrangThai());
+            s.setMotaSp(sp.getMotaSp());
+            session.update(s);
+            session.flush();
+            session.getTransaction().commit();
+            return true;
+        } catch (Exception ex) {
+            if (session.getTransaction().isActive()) {
+                session.getTransaction().rollback();
+            }
+            ex.printStackTrace();
+        }
+        return false;
+    }
+
+    @Override
+    public Boolean DeleteProduct(String maSp) {
+        try {
+            if (!session.isOpen()) {
+                SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+                this.session = sessionFactory.openSession();
+            }
+            session.getTransaction().begin();
+            String sql = "from Sanpham where maSp = ?";
+
+            Query query = session.createQuery(sql);
+            query.setString(0, maSp);
+            List list = query.list();
+            Sanpham sp = (Sanpham) list.get(0);
+            sp.setTrangThai(Boolean.FALSE);
+            session.update(sp);
+            session.flush();
+            session.getTransaction().commit();
             return true;
         } catch (Exception ex) {
             if (session.getTransaction().isActive()) {

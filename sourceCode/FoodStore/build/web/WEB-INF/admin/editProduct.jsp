@@ -836,18 +836,18 @@
                                                     <div class="col-xs-12 col-sm-6">
                                                         <div class="clearfix">
 
-                                                            <c:if test="${sanPham.anhSp.length() >0}">
+                                                           
 
                                                                 <img src="${pageContext.request.contextPath}/${sanPham.anhSp}" width="243" height="209" id="blah" />
                                                                 <div class="space-2">
 
                                                                 </div>
 
-                                                            </c:if>
+                                                         
 
 
 
-                                                                <input multiple="" onchange="readURL(this);"  type="file" id="id-input-file-3" name="fileUplid-input-file-3oad" value="${sanPham.anhSp}" />
+                                                                <input multiple="" onchange="readURL(this);"  type="file" id="id-input-file-3" name="fileUpload" value="${sanPham.anhSp}" />
 
                                                         </div>
                                                     </div>
@@ -1433,15 +1433,13 @@
 
                                                                 $(function (){
                                                                          
-    
-
                                                                     $(".remove").click(function ()
                                                                     {
                                                                          $('#blah')
                                                                                     .attr('src', null)
                                                                                     .width(243)
                                                                                     .height(209);
-                                                                    })
+                                                                    });
                                                                 });
                                                                
 
