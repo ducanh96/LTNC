@@ -30,6 +30,12 @@
     
     <bean id="sDAO" class="Dao.NhanVienDaoImp" />
     <bean id="sService" class="Service.NhanVienServiceImp" />
+    <bean id="bDAO" class="Dao.DonHangDaoImp" />
+    <bean id="bService" class="Service.DonHangServiceImp" />
+    <bean id="bdDAO" class="Dao.ChiTietDonHangDaoImp" />
+    <bean id="bdService" class="Service.ChiTietDonHangServiceImp" />
+    <bean id="loginDAO" class="Dao.TaikhoanDaoImp"/>
+    <bean id="loginService" class="Service.TaikhoanServiceImp"/>
 
     <mvc:resources mapping="/resources/**" location="/resources/" cache-period="31556926"/>
     <mvc:annotation-driven />

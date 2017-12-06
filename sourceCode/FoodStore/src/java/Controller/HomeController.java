@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 /**
  *
  * @author Duc Anh
+ * moi nhat
  */
 @Controller
 @RequestMapping(value = "/home")
